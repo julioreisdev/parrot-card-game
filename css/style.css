@@ -7,7 +7,7 @@ body {
 
 header {
   width: 100%;
-  padding: 50px 0.25rem;
+  padding: 3rem 0.25rem 1rem 0.25rem;
 }
 
 .titulo {
@@ -21,7 +21,7 @@ header {
 /*  */
 
 main {
-  width: 80%;
+  width: 70%;
   margin: 0 auto;
 }
 
@@ -32,7 +32,11 @@ main {
 }
 
 .lista li {
-  margin: 1rem 2rem;
+  margin: 2rem 5rem 146px 5rem;
+  display: flex;
+  justify-content: center;
+  transform-style: preserve-3d;
+  transition: all 0.5s;
 }
 
 .lista li:hover {
@@ -48,10 +52,19 @@ main {
   display: flex;
   align-items: center;
   justify-content: center;
+  position: absolute;
 }
 
 .carta img {
   width: 100px;
+}
+
+.back {
+  backface-visibility: hidden;
+}
+
+.flip {
+  transform: rotateY(180deg);
 }
 
 /*  */
