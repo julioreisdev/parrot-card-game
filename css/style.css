@@ -59,6 +59,10 @@ main {
   width: 100px;
 }
 
+.front {
+  transform: rotateY(180deg);
+}
+
 .back {
   backface-visibility: hidden;
 }
