@@ -3,6 +3,8 @@ let cartasEscolhidas = [];
 let cartaAnterior = null
 let acertos = []
 
+let contCliques = 0
+
 function confereNumeroDeCartas() {
   let nCartas;
   while (true) {
@@ -69,22 +71,26 @@ function cliqueCarta(elemento) {
   }
 
   if (cartaAnterior === null) {
-    elemento.classList.add('flip')
-    cartaAnterior = elemento
+    elemento.classList.add('flip');
+    cartaAnterior = elemento;
   }
   else {
     if (cartaAnterior.querySelector('.front img').src === elemento.querySelector('.front img').src && elemento !== cartaAnterior) {
-    elemento.classList.add('flip')
-    acertos.push(elemento)
-    cartaAnterior.classList.add('flip')
-    acertos.push(cartaAnterior)
+    elemento.classList.add('flip');
+    acertos.push(elemento);
+    cartaAnterior.classList.add('flip');
+    acertos.push(cartaAnterior);
     cartaAnterior = null
     }
     else {
-      elemento.classList.remove('flip')
-      cartaAnterior.classList.remove('flip')
-      cartaAnterior = null
-    } 
+      elemento.classList.add('flip')
+      
+      setTimeout(function() {
+        elemento.classList.remove('flip');
+        cartaAnterior.classList.remove('flip');
+        cartaAnterior = null
+      }, 1000);
+    }  
   }
 }
 
