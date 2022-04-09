@@ -2,13 +2,14 @@ let cartas = [];
 let cartasEscolhidas = [];
 let cartaAnterior = null
 let acertos = []
+let nJogadas = 0
 
 let contCliques = 0
 
 function confereNumeroDeCartas() {
   let nCartas;
   while (true) {
-    nCartas = Number(prompt('Com quantas cartas você quer jogar?'));
+    nCartas = Number(prompt('Com quantas cartas você quer jogar? (4~14)'));
     if (nCartas >= 4 && nCartas <= 14 && nCartas % 2 === 0) {
       return nCartas;
     }
@@ -63,6 +64,18 @@ function exibeCartas(nCartas) {
   }
 }
 
+function fimDeJogo() {
+  let totalIntens = document.querySelectorAll('li')
+  let totalCartasViradas = document.querySelectorAll('.flip')
+  if (totalCartasViradas.length === totalIntens.length) {
+    let main = document.querySelector('main');
+    let telaFinal = document.querySelector('.fim-de-jogo');
+    main.classList.add('opaco');
+    telaFinal.classList.remove('display-none');
+    telaFinal.querySelector('h3').innerHTML = `Você ganhou em ${nJogadas} jogadas`
+  }
+}
+
 function cliqueCarta(elemento) {
   for(let i = 0; i < acertos.length; i++) {
     if (elemento === acertos[i]) {
@@ -92,6 +105,11 @@ function cliqueCarta(elemento) {
       }, 1000);
     }  
   }
+  nJogadas++;
+
+  setTimeout(function () {
+    fimDeJogo()
+  }, 500)
 }
 
 window.addEventListener('load', function () {
