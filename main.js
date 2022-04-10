@@ -5,6 +5,22 @@ let acertos = []
 let nJogadas = 0
 
 let contCliques = 0
+let contadorSegundos = 0
+let contadorMinutos = 0 
+
+let interval = this.setInterval(function() {
+  if (contadorSegundos === 60) {
+    contadorMinutos++
+    contadorSegundos = 0
+  }
+  let minutos = document.querySelector('.relogio-minutos')
+  let segundos = document.querySelector('.relogio-segundos')
+
+  minutos.innerHTML = `⌚ ${contadorMinutos}m `
+  segundos.innerHTML = `${contadorSegundos}s`
+
+  contadorSegundos++
+},1000)
 
 function confereNumeroDeCartas() {
   let nCartas;
@@ -70,9 +86,16 @@ function fimDeJogo() {
   if (totalCartasViradas.length === totalIntens.length) {
     let main = document.querySelector('main');
     let telaFinal = document.querySelector('.fim-de-jogo');
+    let relogio = document.querySelector('.relogio')
+
+    relogio.classList.add('opaco')
     main.classList.add('opaco');
     telaFinal.classList.remove('display-none');
-    telaFinal.querySelector('h3').innerHTML = `Você ganhou em ${nJogadas} jogadas`
+
+    telaFinal.querySelector('h3').innerHTML = `Você ganhou em ${nJogadas} jogadas`;
+    telaFinal.querySelector('h4').innerHTML = `⌚ TEMPO: ${contadorMinutos}m ${contadorSegundos}s`
+
+    clearInterval(interval);
   }
 }
 

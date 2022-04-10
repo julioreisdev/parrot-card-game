@@ -7,7 +7,7 @@ body {
 
 header {
   width: 100%;
-  padding: 3rem 0.25rem 1rem 0.25rem;
+  padding: 3.5rem 0.25rem 1rem 0.25rem;
 }
 
 .titulo {
@@ -119,6 +119,31 @@ main {
   position: absolute;
   bottom: -5px;
   right: -35px;
+}
+
+/*  */
+
+.relogio {
+  width: 80px;
+  height: 40px;
+  position: fixed;
+  top: 0.5rem;
+  right: 0.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+  border-bottom: 2px solid #75B79E;
+  background-color: #fff;
+}
+
+.relogio p {
+  font-weight: bold;
+  color: #75B79E;
+}
+
+.relogio-minutos {
+  margin-right: 0.2rem;
 }
 
 /*  */
